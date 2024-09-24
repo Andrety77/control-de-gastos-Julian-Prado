@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Gastos Mensuales</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="img-container">
+                <img src="./assets/img/titulo.png" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="nombreGasto" placeholder="Nombre del gasto">
+                <input type="number" id="valorGasto" placeholder="Valor del gasto" min="0" step="0.01">
+                <input type="text" id="descripcionGasto" placeholder="Descripción del gasto"> <!-- Nuevo campo -->
+                <button id="botonFormulario" onclick="clickBoton();">Agregar Gasto</button>
+            </div>
+            <ul id="listaDeGastos"></ul>
+            <div class="total">
+                Total Mensual: US$ <span id="totalGastos">0.00</span>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>Sobre mí</h2>
+                <p>Desarrollado por Julian Andrey Prado Peña, apasionado por la tecnología y el desarrollo de software.</p>
+                <img src="assets/img/logo.png" alt="Logo" class="footer-logo">
+            </div>
+            <div class="footer-section contact">
+                <h2>Contacto</h2>
+                <p>Email: <a href="mailto:julian.prado@example.com">julian.prado@example.com</a></p>
+                <p>Teléfono: <a href="tel:+1234567890">+123 456 7890</a></p>
+            </div>
+            <div class="footer-section links">
+                <h2>Enlaces</h2>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/julianprado" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://github.com/julianprado" target="_blank">GitHub</a></li>
+                    <li><a href="https://julianprado.com" target="_blank">Portafolio</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Julian Andrey Prado Peña | Todos los derechos reservados
+        </div>
+    </footer>
+    <script src="assets/js/script.js"></script>
+    
+</body>
+
+</html>
