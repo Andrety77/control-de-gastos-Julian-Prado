@@ -1,19 +1,24 @@
 let listaNombresGastos = [];
 let listaValoresGastos = [];
-let listaDescripcionesGastos = []; // Nueva lista para las descripciones
+let listaDescripcionesGastos = [];
 
 function clickBoton() {
     let nombreGasto = document.getElementById("nombreGasto").value;
     let valorGasto = parseFloat(document.getElementById("valorGasto").value);
-    let descripcionGasto = document.getElementById("descripcionGasto").value; // Nuevo campo
+    let descripcionGasto = document.getElementById("descripcionGasto").value;
+
+    if (!nombreGasto || isNaN(valorGasto) || !descripcionGasto) {
+        alert('Por favor, completa todos los campos.');
+        return;
+    }
 
     if (valorGasto > 150) {
-        alert('¡Alerta! El gasto registrado es mayor a $150 dólares.');
+        alert('¡Alerta! El gasto registrado es mayor a $150.');
     }
 
     listaNombresGastos.push(nombreGasto);
     listaValoresGastos.push(valorGasto);
-    listaDescripcionesGastos.push(descripcionGasto); // Agregar descripción a la lista
+    listaDescripcionesGastos.push(descripcionGasto);
 
     actualizarListaGastos();
 }
@@ -26,11 +31,13 @@ function actualizarListaGastos() {
 
     listaNombresGastos.forEach((elemento, posicion) => {
         const valorGasto = Number(listaValoresGastos[posicion]);
-        const descripcionGasto = listaDescripcionesGastos[posicion]; // Obtener descripción
+        const descripcionGasto = listaDescripcionesGastos[posicion];
 
-        htmlLista += `<li>${elemento} - $ ${valorGasto.toFixed(2)}<br>Descripción: ${descripcionGasto}
-        <button onclick="modificarGasto(${posicion});">Modificar</button>
-        <button onclick="eliminarGasto(${posicion});">Eliminar</button>
+        htmlLista += `<li>${elemento} - COP $ ${valorGasto.toFixed(2)}<br>Descripción: ${descripcionGasto}
+        <div class="actions">
+            <button onclick="modificarGasto(${posicion});">✏️</button>
+            <button onclick="eliminarGasto(${posicion});">🗑️</button>
+        </div>
         </li>`;
 
         totalGastos += valorGasto;
@@ -44,13 +51,13 @@ function actualizarListaGastos() {
 function limpiar() {
     document.getElementById("nombreGasto").value = "";
     document.getElementById("valorGasto").value = "";
-    document.getElementById("descripcionGasto").value = ""; // Limpiar descripción
+    document.getElementById("descripcionGasto").value = "";
 }
 
 function eliminarGasto(posicion) {
     listaNombresGastos.splice(posicion, 1);
     listaValoresGastos.splice(posicion, 1);
-    listaDescripcionesGastos.splice(posicion, 1); // Eliminar descripción
+    listaDescripcionesGastos.splice(posicion, 1);
     actualizarListaGastos();
 }
 
@@ -66,3 +73,18 @@ function modificarGasto(posicion) {
         actualizarListaGastos();
     }
 }
+
+document.getElementById("filtroGasto").addEventListener("input", function() {
+    const filtro = this.value.toLowerCase();
+    const listaElementos = document.getElementById("listaDeGastos");
+    const items = listaElementos.getElementsByTagName("li");
+
+    Array.from(items).forEach(item => {
+        const texto = item.textContent.toLowerCase();
+        if (texto.includes(filtro)) {
+            item.style.display = "";
+        } else {
+            item.style.display = "none";
+        }
+    });
+});
