@@ -2,9 +2,18 @@ let listaNombresGastos = [];
 let listaValoresGastos = [];
 let listaDescripcionesGastos = [];
 
+document.getElementById("valorGasto").addEventListener("input", function() {
+    this.value = formatNumber(this.value);
+});
+
+function formatNumber(value) {
+    return value.replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
 function clickBoton() {
     let nombreGasto = document.getElementById("nombreGasto").value;
-    let valorGasto = parseFloat(document.getElementById("valorGasto").value);
+    let valorGasto = parseFloat(document.getElementById("valorGasto").value.replace(/\./g, ""));
     let descripcionGasto = document.getElementById("descripcionGasto").value;
 
     if (!nombreGasto || isNaN(valorGasto) || !descripcionGasto) {
@@ -12,8 +21,8 @@ function clickBoton() {
         return;
     }
 
-    if (valorGasto > 150) {
-        alert('¡Alerta! El gasto registrado es mayor a $150.');
+    if (valorGasto > 1000000) {
+        alert('¡Alerta! El gasto registrado es mayor a un millon.');
     }
 
     listaNombresGastos.push(nombreGasto);
@@ -33,7 +42,7 @@ function actualizarListaGastos() {
         const valorGasto = Number(listaValoresGastos[posicion]);
         const descripcionGasto = listaDescripcionesGastos[posicion];
 
-        htmlLista += `<li>${elemento} - COP $ ${valorGasto.toFixed(2)}<br>Descripción: ${descripcionGasto}
+        htmlLista += `<li>${elemento} - COP $ ${valorGasto.toFixed().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<br>Descripción: ${descripcionGasto}
         <div class="actions">
             <button onclick="modificarGasto(${posicion});">✏️</button>
             <button onclick="eliminarGasto(${posicion});">🗑️</button>
@@ -44,7 +53,7 @@ function actualizarListaGastos() {
     });
 
     listaElementos.innerHTML = htmlLista;
-    totalElementos.innerHTML = totalGastos.toFixed(2);
+    totalElementos.innerHTML = totalGastos.toFixed().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     limpiar();
 }
 
@@ -63,7 +72,7 @@ function eliminarGasto(posicion) {
 
 function modificarGasto(posicion) {
     const nombreGasto = prompt('Modificar nombre del gasto:', listaNombresGastos[posicion]);
-    const valorGasto = parseFloat(prompt('Modificar valor del gasto:', listaValoresGastos[posicion]));
+    const valorGasto = parseFloat(prompt('Modificar valor del gasto:', listaValoresGastos[posicion]).replace(/\./g, ""));
     const descripcionGasto = prompt('Modificar descripción del gasto:', listaDescripcionesGastos[posicion]);
 
     if (nombreGasto && !isNaN(valorGasto) && descripcionGasto) {
