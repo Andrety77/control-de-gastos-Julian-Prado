@@ -1,64 +1,145 @@
 <!DOCTYPE html>
+<!-- Define el tipo de documento como HTML5 -->
+
 <html lang="en">
+<!-- Abre el elemento raíz del documento HTML y establece el idioma como inglés -->
 
 <head>
     <meta charset="UTF-8">
+    <!-- Define la codificación de caracteres como UTF-8 -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Configura la ventana gráfica para que el diseño sea responsivo en dispositivos móviles -->
+
     <title>Control de Gastos Mensuales</title>
+    <!-- Establece el título de la página que aparece en la pestaña del navegador -->
+
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Vincula el archivo CSS externo para aplicar estilos a la página -->
 </head>
 
 <body>
+    <!-- Abre el cuerpo del documento HTML -->
+
     <header>
+        <!-- Define el encabezado de la página -->
+
         <div class="img-container">
+            <!-- Contenedor para la imagen del título -->
+
             <img src="./assets/img/titulo.png" alt="Título" />
+            <!-- Imagen del título con una ruta relativa y texto alternativo -->
         </div>
     </header>
+
     <main>
+        <!-- Define el contenido principal de la página -->
+
         <div class="main-container">
+            <!-- Contenedor principal -->
+
             <div class="container">
+                <!-- Contenedor secundario -->
+
                 <div class="form-group">
+                    <!-- Grupo de formulario -->
+
                     <input type="text" id="nombreGasto" placeholder="Nombre del gasto">
+                    <!-- Campo de entrada para el nombre del gasto -->
+
                     <input type="text" id="valorGasto" placeholder="Valor del gasto" min="0" step="0.01">
+                    <!-- Campo de entrada para el valor del gasto con validación mínima y paso -->
+
                     <input type="text" id="descripcionGasto" placeholder="Descripción del gasto">
+                    <!-- Campo de entrada para la descripción del gasto -->
+
                     <button id="botonFormulario" onclick="clickBoton();">Agregar Gasto</button>
+                    <!-- Botón para agregar el gasto que llama a la función JavaScript 'clickBoton' -->
                 </div>
+
                 <div class="filter-group">
+                    <!-- Grupo de filtro -->
+
                     <input type="text" id="filtroGasto" placeholder="Filtrar gastos">
+                    <!-- Campo de entrada para filtrar los gastos -->
                 </div>
+
                 <ul id="listaDeGastos"></ul>
+                <!-- Lista no ordenada para mostrar los gastos -->
+
                 <div class="total">
+                    <!-- Contenedor para el total mensual -->
+
                     Total Mensual: COP $ <span id="totalGastos">0.00</span>
+                    <!-- Texto que muestra el total mensual con un span para actualizar el valor -->
                 </div>
             </div>
         </div>
     </main>
+
     <footer class="footer">
+        <!-- Define el pie de página -->
+
         <div class="footer-content">
+            <!-- Contenido del pie de página -->
+
             <div class="footer-section about">
+                <!-- Sección sobre mí -->
+
                 <h2>Sobre mí</h2>
+                <!-- Título de la sección -->
+
                 <p>Desarrollado por Julian Andrey Prado Peña, apasionado por la tecnología y el desarrollo de software.</p>
+                <!-- Descripción sobre el desarrollador -->
+
                 <img src="./assets/img/logo.jpg" alt="LogoJulianPrado" class="footer-logo">
+                <!-- Imagen del logo con una ruta relativa y texto alternativo -->
             </div>
+
             <div class="footer-section contact">
+                <!-- Sección de contacto -->
+
                 <h2>Contacto</h2>
+                <!-- Título de la sección -->
+
                 <p>Email: <a href="mailto:silon@hotmail.es">silon@hotmail.es</a></p>
+                <!-- Enlace de correo electrónico -->
+
                 <p>Teléfono: <a href="tel:+3017501273">+57 3017501273</a></p>
+                <!-- Enlace de teléfono -->
             </div>
+
             <div class="footer-section links">
+                <!-- Sección de enlaces -->
+
                 <h2>Enlaces</h2>
+                <!-- Título de la sección -->
+
                 <ul>
+                    <!-- Lista de enlaces -->
+
                     <li><a href="https://www.linkedin.com/in/julian-andrey-prado-/" target="_blank">LinkedIn</a></li>
+                    <!-- Enlace a LinkedIn -->
+
                     <li><a href="https://github.com/julianprado" target="_blank">GitHub</a></li>
+                    <!-- Enlace a GitHub -->
+
                     <li><a href="https://julianprado.com" target="_blank">Portafolio</a></li>
+                    <!-- Enlace al portafolio -->
                 </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
+            <!-- Parte inferior del pie de página -->
+
             &copy; 2024 Julian Andrey Prado Peña | Todos los derechos reservados
+            <!-- Texto de derechos de autor -->
         </div>
     </footer>
+
     <script src="assets/js/script.js"></script>
+    <!-- Vincula el archivo JavaScript externo -->
 </body>
 
 </html>
